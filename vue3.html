@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+	<title>test</title>
+	<script src="https://unpkg.com/vue@next"></script>
+	<script type="text/javascript" src="d3v6.2.0.js"></script>
+	<style>
+		.information {
+			color: green;
+			margin: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1></h1>
+	<script>
+		const svg = d3.select("h1").append("svg").attr("height", "100%").attr("width", "100%");
+		const spaceBetween = 30;
+
+		svg.selectAll("rect")
+			.data(data)
+			.enter().append("rect")
+			.attr("height", (d, i) => d * 10)
+			.attr("width", "4")
+			.attr("x", (d, i) => (i * spaceBetween) + spaceBetween)
+			.attr("y", (d, i) => 200 - (d * 10))
+
+	</script>
+</body>
+
+</html>

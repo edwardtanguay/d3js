@@ -1,4 +1,6 @@
-html, body {
-  margin: 0;
-  height: 100%;
+
+.area {
+	width: 600px;
+	height: 600px;
+	background-color: #eee;
 }
