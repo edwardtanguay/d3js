@@ -12,33 +12,21 @@
 			height: 600px;
 			background-color: #eee;
 		}
+
+		.controls {
+			margin: 10px 2px;
+		}
 	</style>
 </head>
 
 <body>
-	<div id="app">
+	<div id="app" class="controls">
 		<div class="information">{{message}}</div>
 		<button @click="changeTheText">Change the Text</button>
 	</div>
 	<div class="area"></div>
-	<!-- <script type="text/javascript" src="shapes2.js"></script> -->
 	<script>
-		var dataArray = [5, 11, 18, 20, 3, 5, 7];
-
-		var svg = d3.select(".area").append("svg").attr("height", "100%").attr("width", "100%");
-
-		svg.selectAll("rect")
-			.data(dataArray)
-			.enter().append("rect")
-			.attr("height", function (d, i) { return d * 15; })
-			.attr("width", "50")
-			.attr("fill", "#ddd")
-			.attr("x", (d, i) => (60 * i) + 20)
-			.attr("y", (d, i) => 580 - (d * 15));
-
-
-	</script>
-	<script>
+		// VUE
 		const app = Vue.createApp({
 			data() {
 				return {
@@ -51,11 +39,26 @@
 				},
 				changeTheText() {
 					this.message = 'you clicked the button';
+					var dataArray = [5, 11, 18, 20, 3, 5, 7];
+
+					var svg = d3.select(".area").append("svg").attr("height", "100%").attr("width", "100%");
+
+					svg.selectAll("rect")
+						.data(dataArray)
+						.enter().append("rect")
+						.attr("height", function (d, i) { return d * 15; })
+						.attr("width", "50")
+						.attr("fill", "#ddd")
+						.attr("x", (d, i) => (60 * i) + 20)
+						.attr("y", (d, i) => 580 - (d * 15));
 				}
 			}
 		})
 		const vm = app.mount('#app');
 		vm.initialize();
+
+		// D3JS
+
 	</script>
 </body>
 
