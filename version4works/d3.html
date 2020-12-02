@@ -4,8 +4,8 @@
 	<title>test simple bar graph</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://unpkg.com/vue@next"></script>
-	<!-- <script type="text/javascript" src="d3.v4.js"></script> -->
 	<script type="text/javascript" src="d3v6.2.0.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 	<style>
 		.area {
 			width: 600px;
@@ -44,14 +44,25 @@
 		.control {
 			display:flex;
 		}
+
+		button.custom-green {
+			background-color: green !important;
+		}
+
+		button.custom-orange {
+			background-color: orange !important;
+		}
+		body {
+			padding: 15px 20px;
+		}
 	</style>
 </head>
 
 <body>
 	<div id="app" class="controls">
 		<div class="colorControls">
-			<button @click="changeColor('orange')">Orange</button>
-			<button @click="changeColor('green')">Green</button>
+			<button @click="changeColor('orange')" class="button is-primary is-small custom-orange">Orange</button>
+			<button @click="changeColor('green')" class="button is-primary is-small custom-green">Green</button>
 		</div>
 		<div class="sliderControls">
 			<div class="control"><span class="label">Space between columns:</span><input type="range" min="2" max="20"
@@ -95,8 +106,6 @@
 		})
 		const vm = app.mount('#app');
 		vm.initialize();
-
-		// D3JS
 
 	</script>
 </body>
