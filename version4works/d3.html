@@ -23,6 +23,7 @@
 	<div id="app" class="controls">
 		<div class="information">{{message}}</div>
 		<button @click="changeTheText">Change the Text</button>
+		<div>{{leftIndent}}</div>
 	</div>
 	<div class="area"></div>
 	<script>
@@ -30,27 +31,29 @@
 		const app = Vue.createApp({
 			data() {
 				return {
-					message: ''
+					message: '',
+					leftIndent: 40
 				}
 			},
 			methods: {
 				initialize() {
 					this.message = 'original value';
-				},
-				changeTheText() {
-					this.message = 'you clicked the button';
 					var dataArray = [5, 11, 18, 20, 3, 5, 7];
-
+					d3.select(".area").html("");
 					var svg = d3.select(".area").append("svg").attr("height", "100%").attr("width", "100%");
-
 					svg.selectAll("rect")
 						.data(dataArray)
 						.enter().append("rect")
 						.attr("height", function (d, i) { return d * 15; })
 						.attr("width", "50")
 						.attr("fill", "#ddd")
-						.attr("x", (d, i) => (60 * i) + 20)
+						.attr("x", (d, i) => (60 * i) + this.leftIndent)
 						.attr("y", (d, i) => 580 - (d * 15));
+				},
+				changeTheText() {
+					this.message = 'you clicked the button';
+					this.leftIndent = 20;
+					this.initialize();
 				}
 			}
 		})
