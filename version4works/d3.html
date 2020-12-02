@@ -17,6 +17,9 @@
 			margin: 10px 2px;
 		}
 
+		.colorControls button {
+			margin-right: 5px;
+		}
 		.colorControls {
 			margin-bottom: 5px;
 			display: flex;
@@ -27,13 +30,10 @@
 
 <body>
 	<div id="app" class="controls">
-		<div class="information">{{message}}</div>
-		<button @click="changeTheText">Change the Text</button>
 		<div class="colorControls">
 			<button @click="changeColor('orange')">Orange</button>
 			<button @click="changeColor('green')">Green</button>
 		</div>
-		<div>{{leftIndent}}</div>
 	</div>
 	<div class="area"></div>
 	<script>
@@ -41,8 +41,7 @@
 		const app = Vue.createApp({
 			data() {
 				return {
-					message: '',
-					leftIndent: 40,
+					leftIndent: 20,
 					color: "orange"
 				}
 			},
@@ -60,11 +59,6 @@
 						.attr("fill", this.color)
 						.attr("x", (d, i) => (60 * i) + this.leftIndent)
 						.attr("y", (d, i) => 580 - (d * 15));
-				},
-				changeTheText() {
-					this.message = 'you clicked the button';
-					this.leftIndent = 20;
-					this.initialize();
 				},
 				changeColor(color) {
 					this.color = color;
