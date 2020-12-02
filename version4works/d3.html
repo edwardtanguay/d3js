@@ -20,10 +20,15 @@
 		.colorControls button {
 			margin-right: 5px;
 		}
+
 		.colorControls {
 			margin-bottom: 5px;
 			display: flex;
 			justify-content: flex-start;
+		}
+
+		.sliderControls {
+			margin-bottom: 5px;
 		}
 	</style>
 </head>
@@ -34,6 +39,10 @@
 			<button @click="changeColor('orange')">Orange</button>
 			<button @click="changeColor('green')">Green</button>
 		</div>
+		<div class="sliderControls">
+			<div class="control"><span class="label">Space between columns:</span><input type="range" min="2" max="20"
+					v-model="spaceBetweenColumns" @change="changeSpaceBetweenColumns()"> {{spaceBetweenColumns}}</div>
+		</div>
 	</div>
 	<div class="area"></div>
 	<script>
@@ -42,7 +51,8 @@
 			data() {
 				return {
 					leftIndent: 20,
-					color: "orange"
+					color: "orange",
+					spaceBetweenColumns: 2
 				}
 			},
 			methods: {
@@ -57,11 +67,14 @@
 						.attr("height", function (d, i) { return d * 15; })
 						.attr("width", "50")
 						.attr("fill", this.color)
-						.attr("x", (d, i) => (60 * i) + this.leftIndent)
+						.attr("x", (d, i) => ((60 + parseInt(this.spaceBetweenColumns)) * i) + this.leftIndent)
 						.attr("y", (d, i) => 580 - (d * 15));
 				},
 				changeColor(color) {
 					this.color = color;
+					this.initialize();
+				},
+				changeSpaceBetweenColumns() {
 					this.initialize();
 				}
 			}
