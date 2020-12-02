@@ -9,7 +9,7 @@
 	<style>
 		.area {
 			width: 600px;
-			height: 600px;
+			height: 400px;
 			background-color: #eee;
 		}
 
@@ -52,7 +52,7 @@
 				return {
 					leftIndent: 20,
 					color: "orange",
-					spaceBetweenColumns: 2
+					spaceBetweenColumns: 7
 				}
 			},
 			methods: {
@@ -68,7 +68,7 @@
 						.attr("width", "50")
 						.attr("fill", this.color)
 						.attr("x", (d, i) => ((60 + parseInt(this.spaceBetweenColumns)) * i) + this.leftIndent)
-						.attr("y", (d, i) => 580 - (d * 15));
+						.attr("y", (d, i) => 380 - (d * 15));
 				},
 				changeColor(color) {
 					this.color = color;
