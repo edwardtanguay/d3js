@@ -30,6 +30,20 @@
 		.sliderControls {
 			margin-bottom: 5px;
 		}
+
+		.sliderControls .label {
+			margin-right: 5px;
+			margin-top: -1px;
+			display: inline-block;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+		.spaceBetween {
+			margin-left: 3px;
+		}
+
+		.control {
+			display:flex;
+		}
 	</style>
 </head>
 
@@ -41,7 +55,7 @@
 		</div>
 		<div class="sliderControls">
 			<div class="control"><span class="label">Space between columns:</span><input type="range" min="2" max="20"
-					v-model="spaceBetweenColumns" @change="changeSpaceBetweenColumns()"> {{spaceBetweenColumns}}</div>
+					v-model="spaceBetweenColumns" @change="changeSpaceBetweenColumns()"> <span class="label spaceBetween">{{spaceBetweenColumns}}</span></div>
 		</div>
 	</div>
 	<div class="area"></div>
