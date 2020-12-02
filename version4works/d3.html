@@ -3,12 +3,23 @@
 <head>
 	<title>test simple bar graph</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://unpkg.com/vue@next"></script>
 	<!-- <script type="text/javascript" src="d3.v4.js"></script> -->
 	<script type="text/javascript" src="d3v6.2.0.js"></script>
-
+	<style>
+		.area {
+			width: 600px;
+			height: 600px;
+			background-color: #eee;
+		}
+	</style>
 </head>
 
 <body>
+	<div id="app">
+		<div class="information">{{message}}</div>
+		<button @click="changeTheText">Change the Text</button>
+	</div>
 	<div class="area"></div>
 	<!-- <script type="text/javascript" src="shapes2.js"></script> -->
 	<script>
@@ -26,6 +37,25 @@
 			.attr("y", (d, i) => 580 - (d * 15));
 
 
+	</script>
+	<script>
+		const app = Vue.createApp({
+			data() {
+				return {
+					message: ''
+				}
+			},
+			methods: {
+				initialize() {
+					this.message = 'original value';
+				},
+				changeTheText() {
+					this.message = 'you clicked the button';
+				}
+			}
+		})
+		const vm = app.mount('#app');
+		vm.initialize();
 	</script>
 </body>
 
